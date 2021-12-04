@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timed Quiz</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- View High Scores Button -->
+    <div class="view-high-score">
+        <button class="button is-small is-outlined is-outlined is-link" id="highscore">View High Scores</button>
+    </div>
+
+    <!-- Info Box -->
+    <div class="info_box">
+        <div class="info_title">
+            <span>Quiz Rules</span>
+        </div>
+        <div class="info_list">
+            <div class="info">1. The Quiz begins when you press the start button.</div>
+            <div class="info">2. You only have <span>60 seconds</span> to answer all the questions.</div>
+            <div class="info">3. If you answer the question incorrectly, time will be deducted from the clock.</div>
+            <div class="info">4. The game is over when all the questions are answered and the timer reaches 0.</div>
+        </div>
+        <!-- Start Quiz Button -->
+    <div class="start_btn">
+        <button class="button is-medium is-outlined is-success" id="start_button">Start Quiz</button>
+    </div>
+    </div>
+
+    <div class="show-initial">
+        <label>
+        <input id="initials-box" type ="text" placeholder="Enter Initials" name="initials">
+        </label>
+        <button id="submit_btn">Submit</button>
+    </div>
+
+
+    <p id="countdown"></p>
+    <div id="show-question">
+    </div>
+
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
