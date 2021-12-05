@@ -9,14 +9,15 @@ let index = 0;
 var showQuestionEl = document.getElementById('show-question');
 var questionEl = document.getElementById('question-placeholder');
 var choicesEl = document.getElementById('choices-placeholder');
-var infoBoxEl = document.querySelector(".info_box");
+var infoBoxEl = document.querySelector(".info-box");
 var showInitialEl = document.querySelector(".show-initial");
 var scores = [];
 var submitButtonEl = document.getElementById('submit_btn');
 var initialsBoxEl = document.getElementById('initials-box');
 showInitialEl.style.display = "none";
 var buttonEl = document.querySelector('#start_button');
-
+var showHighScoresEl = document.getElementById('show-highscores');
+var btnHighScoresEl = document.querySelector('#high_score_button');
 
 // countdown function
 function updateCountdown() {
@@ -34,40 +35,40 @@ function updateCountdown() {
 let questions = [
     {
         numb: 1,
-        question:   "Inside which HTML element do we put the Javascript?",
-        answer:     "<script>",
+        question:   "What is a DOM in Javascript?",
+        answer:     "Document Object Model",
         options: [
-            "<scr>",
-            "<javascript>",
-            "<js>",
-            "<script>"
+            "Distinct Object Model",
+            "Document Order Model",
+            "Document Object Model",
+            "Document Or Model"
         ]
     },
     {
         numb: 2,
-        question:   "Where is the correct place to insert a JavaScript?",
-        answer:     "Both the <head> section and the <body>",
+        question:   "What are global variables?",
+        answer:     "Global variables are available throughout the length of the code so that it has no scope.",
         options: [
-            "<head>",
-            "<body>",
-            "<section>",
-            "Both the <head> section and the <body>"
+            "Global variables are available throughout the length of the code so that it has no scope.",
+            "Global variables are available throughout the length of the code so that it has a scope.",
+            "Global variables are not available throughout the length of the code so that it has no scope.",
+            "none are correct"
         ]
     },
     {
         numb: 3,
         question:   "What is the correct syntax for referring to an external script called 'script.js'?",
-        answer:     "<script src ='script.js'",
+        answer:     "&lt;script src ='script.js'&gt;",
         options: [
-            "<script href ='script.js'",
-            "<script src ='script.js'",
-            "<script id ='script.js'",
-            "<script srcs ='script.js'"
+            "&lt;script href='script.js'&gt;",
+            "&lt;script src='script.js'&gt;",
+            "&lt;script id='script.js'&gt;",
+            "&lt;script srcs='script.js'&gt;"
         ]
     },
     {
         numb: 4,
-        question:   "The external JavaScript file must contain the <script> tag.",
+        question:   "The external JavaScript file must contain the &lt;script&gt; tag.",
         answer:     "False",
         options: [
             "True",
@@ -147,20 +148,26 @@ let questions = [
 
 
 
-// Question is presented in dynamic html 
+// Question is presented in dynamic html - used <p> element because it occupies a line each = default column
 function displayQuestion() {
     showQuestionEl.innerHTML =
     `<h1 id="question-placeholder">${questions[index].question}</h1>
      <div>
-        <p><button class="choices-placeholder">1. ${questions[index].options[0]}</button></p>
-        <p><button class="choices-placeholder">2. ${questions[index].options[1]}</button></p>
-        <p><button class="choices-placeholder">3. ${questions[index].options[2]}</button></p>
-        <p><button class="choices-placeholder">4. ${questions[index].options[3]}</button></p>
+        <p><button class="choices-placeholder" id="choices-1">1. ${questions[index].options[0]}</button></p>
+        <p><button class="choices-placeholder" id="choices-2">2. ${questions[index].options[1]}</button></p>
+        <p><button class="choices-placeholder" id="choices-3">3. ${questions[index].options[2]}</button></p>
+        <p><button class="choices-placeholder" id="choices-4">4. ${questions[index].options[3]}</button></p>
      </div>`
 
 var buttonChoices = document.querySelectorAll(".choices-placeholder");
 for (let i = 0; i < buttonChoices.length; i++) {
     buttonChoices[i].addEventListener("click", function(){
+        //Check if answer is correct
+        if (questions[index].answer != questions[index].options) {
+            //how to get selected option on button click
+            //subtract time
+        } 
+        //after checking, move on to the next question
         index++
         if (index < questions.length) {
         
@@ -174,7 +181,32 @@ for (let i = 0; i < buttonChoices.length; i++) {
     })
 }
 }; 
+//Start Display High Score Code
+function displayHighScores() {
+    var newScore = ""
+    for (let i = 0; i < scores.length; i++) {
+        var initial = scores[i].initial;
+        var score = scores[i].score;
+        
+        newScore = newScore + `<tr><td>${initial}</td><td>${score}</td></tr>`
+        
+        }
+    showHighScoresEl.innerHTML =
+    `<table>
+        <tr>
+        <th>Player</th>
+        <th>Scores</th>
+        </tr>`
+    + newScore
+    + `</table>`
+}
 
+
+var showScores = function() {
+    displayHighScores();
+}
+btnHighScoresEl.addEventListener("click", showScores)
+//End Display High Score Code
 
 // Start Quiz
 var startQuiz = function() {
@@ -196,12 +228,3 @@ submitButtonEl.addEventListener("click", function(){
 
 
 
-
-// function myFunction() {
-//     var x = document.getElementById("myDIV");
-//     if (x.style.display === "none") {
-//       x.style.display = "block";
-//     } else {
-//       x.style.display = "none";
-//     }
-//   }

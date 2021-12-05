@@ -42,3 +42,26 @@ AS A coding boot camp student,
 
 ## Image Source
 ![alt text](http://url/to/img.png)
+
+
+## TODO's
+-Subtract time from the timer when answer is incorrect
+-Right and wrong answers  (if else logic)
+-how to incorporate dynamic logic with choice selection via button id.
+
+    answerCorrect logic:
+        question[i].answer == question[i].option
+
+    if (answerCorrect == false)
+        Subtract time by 5 seconds
+        move on to the next question --done
+
+    else (answerCorrect == true)
+        Add to score
+        move on to the next question --done
+
+-Once the user is done with the quiz, enter initials then record actual score
+    -We want the quiz to reset.
+        -timer reset
+-When Timer reaches 0, end the quiz -> go to enter initials then record actual score
+-
