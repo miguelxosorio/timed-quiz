@@ -170,7 +170,7 @@ let questions = [
 // Question is presented in dynamic html - used <p> element because it occupies a line each = default column
 function displayQuestion() {
     showQuestionEl.innerHTML =
-    `<div>
+    `<div id="questions-with-choices">
         <h1 id="question-placeholder">${questions[index].question}</h1>
      
         <p><button class="choices-placeholder" id="choices-1">1. ${questions[index].options[0]}</button></p>

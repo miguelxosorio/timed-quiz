@@ -8,4 +8,29 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.title {
+    color: cadetblue;
+    text-align: center;
+    margin-top: 5%;
+}
 
+.info_list {
+    background-color: rgb(216, 216, 218);
+}
+
+.info-box {
+    background-color: rgb(143, 163, 96);
+}
+
+.info-box {
+    margin-top: 5%;
+    margin-right: 20%;
+    margin-left: 20%;
+    border: solid;
+}
+
+#questions-with-choices {
+    margin-left: 20%;
+    margin-right: 20%;
+    border: solid;
+}
