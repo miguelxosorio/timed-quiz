@@ -8,8 +8,14 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    <!-- Title -->
+    <div>
+        <h1 class="title is-1">
+            TIMED QUIZ
+        </h1>
+    </div>
     <!-- View High Scores Button -->
-    <div class="view-high-score">
+    <div class="view-high-score is-flex is-justify-content-flex-end">
         <button class="button is-small is-outlined is-outlined is-link" id="high_score_button">View High Scores</button>
     </div>
 
@@ -20,7 +26,7 @@
         </div>
         <div class="info_list">
             <div class="info">1. The Quiz begins when you press the start button.</div>
-            <div class="info">2. You only have </span>60 seconds</span> to answer all the questions.</div>
+            <div class="info">2. You only have <span>60 seconds</span> to answer all the questions.</div>
             <div class="info">3. If you answer the question incorrectly, time will be deducted from the clock.</div>
             <div class="info">4. The game is over when all the questions are answered and the timer reaches 0.</div>
         </div>
@@ -39,11 +45,10 @@
 
 
     <p id="countdown"></p>
-    <div id="show-question"></div>
 
-    <div id="show-highscores">
-        
-    </div>
+    <div id="show-question"></div>
+    <div id="alert-answers"><p></p></div>
+    <div id="show-highscores"></div>
 
 
     <script src="./js/script.js"></script>

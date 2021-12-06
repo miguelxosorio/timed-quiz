@@ -28,8 +28,27 @@ function updateCountdown() {
 
     countDownEl.innerHTML = `${minutes}:${seconds}`;
     time--;
+    
+    if (time <= 0) {
+        time = 0;
+        countDownEl.innerHTML = `0:00`;
+    }
 };
 
+// function to subtract time when answer is incorrect
+function penalty() {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    seconds = seconds -5;
+    countDownEl.innerHTML = `${minutes}:${seconds}`;
+    time = time -10; // specified time penalty -10 seconds
+    if (time <= 0) {
+        time = 0;
+        countDownEl.innerHTML = `0:00`;
+    }
+};
 
 // Creating the array and passing the number, questions, options, and answers
 let questions = [
@@ -151,8 +170,9 @@ let questions = [
 // Question is presented in dynamic html - used <p> element because it occupies a line each = default column
 function displayQuestion() {
     showQuestionEl.innerHTML =
-    `<h1 id="question-placeholder">${questions[index].question}</h1>
-     <div>
+    `<div>
+        <h1 id="question-placeholder">${questions[index].question}</h1>
+     
         <p><button class="choices-placeholder" id="choices-1">1. ${questions[index].options[0]}</button></p>
         <p><button class="choices-placeholder" id="choices-2">2. ${questions[index].options[1]}</button></p>
         <p><button class="choices-placeholder" id="choices-3">3. ${questions[index].options[2]}</button></p>
@@ -172,9 +192,9 @@ for (let i = 0; i < buttonChoices.length; i++) {
         if (userChoice != correctAnswer) {
             
             // timer deduction
-            // timer reaches 0, end quiz - save results
-        }
+            penalty();
 
+        }
       
         //after checking, move on to the next question
         index++
@@ -191,6 +211,15 @@ for (let i = 0; i < buttonChoices.length; i++) {
     }
 };
 
+function timeCheck() {
+    if (time <= 0) {
+        clearInterval(timerId)
+        showInitialEl.style.display = "block";
+        showQuestionEl.style.display = "none";
+    } 
+}
+
+
 //Start Display High Score Code
 function displayHighScores() {
     var newScore = "";
@@ -202,7 +231,7 @@ function displayHighScores() {
         
         }
     showHighScoresEl.innerHTML =
-    `<table>
+    `<table class="table">
         <tr>
         <th>Player</th>
         <th>Scores</th>
@@ -225,6 +254,8 @@ console.log("works?");
 displayQuestion();
 infoBoxEl.style.display = 'none';
 timerId = setInterval(updateCountdown, 1000);
+
+setInterval(timeCheck, 1000);
 };
 
 // eventlistener, quiz starts when start button is pressed
