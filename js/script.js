@@ -15,7 +15,7 @@ var scores = [];
 var submitButtonEl = document.getElementById('submit_btn');
 var initialsBoxEl = document.getElementById('initials-box');
 showInitialEl.style.display = "none";
-var buttonEl = document.querySelector('#start_button');
+var startButtonEl = document.querySelector('#start_button');
 var showHighScoresEl = document.getElementById('show-highscores');
 var btnHighScoresEl = document.querySelector('#high_score_button');
 
@@ -162,11 +162,20 @@ function displayQuestion() {
 var buttonChoices = document.querySelectorAll(".choices-placeholder");
 for (let i = 0; i < buttonChoices.length; i++) {
     buttonChoices[i].addEventListener("click", function(){
-        //Check if answer is correct
-        if (questions[index].answer != questions[index].options) {
-            //how to get selected option on button click
-            //subtract time
-        } 
+        
+        var userChoice = buttonChoices[i].innerHTML; // setting up the variable for the user's button click
+        var correctAnswer = questions[index].answer; // setting up the variable for the correct answer
+        console.log("this is a user choice", userChoice); // logging what the user is clicking
+        console.log("this is the correct answer", correctAnswer); // logging what the right answer is
+        
+
+        if (userChoice != correctAnswer) {
+            
+            // timer deduction
+            // timer reaches 0, end quiz - save results
+        }
+
+      
         //after checking, move on to the next question
         index++
         if (index < questions.length) {
@@ -179,11 +188,12 @@ for (let i = 0; i < buttonChoices.length; i++) {
         }
         
     })
-}
-}; 
+    }
+};
+
 //Start Display High Score Code
 function displayHighScores() {
-    var newScore = ""
+    var newScore = "";
     for (let i = 0; i < scores.length; i++) {
         var initial = scores[i].initial;
         var score = scores[i].score;
@@ -208,6 +218,7 @@ var showScores = function() {
 btnHighScoresEl.addEventListener("click", showScores)
 //End Display High Score Code
 
+
 // Start Quiz
 var startQuiz = function() {
 console.log("works?");
@@ -217,7 +228,9 @@ timerId = setInterval(updateCountdown, 1000);
 };
 
 // eventlistener, quiz starts when start button is pressed
-buttonEl.addEventListener("click", startQuiz);
+startButtonEl.addEventListener("click", startQuiz);
+
+// eventlistener, add scores to storage
 submitButtonEl.addEventListener("click", function(){
     scores.push({
         initial: initialsBoxEl.value,
