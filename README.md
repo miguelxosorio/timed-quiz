@@ -41,8 +41,10 @@ AS A coding boot camp student,
 - Player must be able to submit their Initials and Highscore
 
 ## Image Source
-![alt text](http://url/to/img.png)
+![sc](C:\Users\migue\Desktop\weekly-challenges\challenge 4\timed-quiz\assets\images)
 
+## Challenges
+- everything, but mostly about loops and timer
 
 ## TODO's
 -Subtract time from the timer when answer is incorrect
@@ -64,4 +66,3 @@ AS A coding boot camp student,
     -We want the quiz to reset.
         -timer reset
 -When Timer reaches 0, end the quiz -> go to enter initials then record actual score
--
